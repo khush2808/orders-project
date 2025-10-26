@@ -1,0 +1,155 @@
+Project Title: Trading Order Form (Next.js + MobX + Custom Server)
+ 
+Objective:
+Build a single-page web application using Next.js, MobX, React Hook Form, and a custom server. The goal is to demonstrate integration of these technologies in a small, functional project suitable for beginners.
+ 
+ 
+---
+ 
+Requirements
+ 
+1. Overview
+Create a simple trading order form where users can enter trade details and view submitted orders below the form.
+The application will have a custom Node.js (Express) server running within Next.js to provide dummy trading data.
+All application state (form submissions, order list, etc.) should be managed using MobX.
+ 
+ 
+---
+ 
+2. Tech Stack
+ 
+Next.js (latest stable version)
+ 
+React Hook Form
+ 
+MobX
+ 
+Node.js (Express for custom server)
+ 
+Tailwind CSS or CSS modules for styling
+ 
+ 
+ 
+---
+ 
+3. Functionality
+ 
+Page: /order
+ 
+A. Order Form (React Hook Form)
+The form should include:
+ 
+Symbol (select input) — Options: NIFTY, BANKNIFTY, RELIANCE, TCS
+ 
+Order Type (select input) — Options: Market, Limit, Stop Limit
+ 
+Quantity (number input)
+ 
+Price (number input, required only for Limit or Stop Limit types)
+ 
+Stop Price (number input, required only for Stop Limit type)
+ 
+Side (radio buttons or select) — Buy / Sell
+ 
+ 
+Validation Rules:
+ 
+Quantity must be positive.
+ 
+Price and Stop Price required depending on order type.
+ 
+Display error messages below invalid fields.
+ 
+ 
+B. Submit Action
+ 
+On submission, send form data to the custom server (POST /api/order).
+ 
+Display the submitted order in an “Order Summary” section below the form.
+ 
+Orders should be stored in a MobX store and re-render reactively when new orders are added.
+ 
+ 
+C. Order Summary Section
+ 
+Show all submitted orders in a simple table with columns: Symbol, Order Type, Quantity, Price, Stop Price, Side.
+ 
+Data should come from MobX store.
+ 
+ 
+ 
+---
+ 
+4. Custom Server (Next.js Custom Server)
+ 
+Implement a custom server using Express integrated with Next.js.
+ 
+Endpoints:
+ 
+POST /api/order: accept order payload and return success response with the same data.
+ 
+GET /api/orders: return a list of dummy or previously submitted orders (optional).
+ 
+ 
+The data can be stored temporarily in memory or generated as dummy data.
+ 
+ 
+ 
+---
+ 
+5. MobX State Management
+ 
+Create a single store OrderStore with observable state for the order list.
+ 
+Include actions such as addOrder() and fetchOrders() (if using the GET endpoint).
+ 
+Use observer to automatically re-render components when the order list changes.
+ 
+ 
+ 
+---
+ 
+6. Folder Structure Example
+ 
+/src
+  /components
+    OrderForm.tsx
+    OrderTable.tsx
+  /pages
+    order.tsx
+  /stores
+    OrderStore.ts
+  /server
+    server.js
+ 
+ 
+---
+ 
+7. Deliverables
+ 
+A working Next.js project with:
+ 
+Functional trading order form with validation.
+ 
+MobX store integration.
+ 
+Custom server handling POST requests.
+ 
+Order summary display.
+ 
+ 
+Include a short README.md with setup and run instructions.
+ 
+ 
+ 
+---
+ 
+8. Evaluation Criteria:
+ 
+Correct integration of Next.js, MobX, React Hook Form, and custom server.
+ 
+Proper form validation and conditional fields.
+ 
+Clean, readable code and folder organization.
+ 
+Functional reactivity using MobX.
